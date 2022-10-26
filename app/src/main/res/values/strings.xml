@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">PhoneTic</string>
+    <string name="greeting">Hello!</string>
+    <string name="home">Home</string>
+    <string name="products">Products</string>
+    <string name="providers">Providers</string>
+    <string name="welcome">Welcome!</string>
+    <string name="login">Log in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="viewmore">View more →</string>
+</resources>

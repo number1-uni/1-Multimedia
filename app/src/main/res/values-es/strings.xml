@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="greeting">¡Hola!</string>
+    <string name="home">Inicio</string>
+    <string name="products">Productos</string>
+    <string name="providers">Proveedores</string>
+    <string name="welcome">¡Buenas!</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="viewmore">Ver más →</string>
+</resources>
