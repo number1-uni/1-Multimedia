@@ -75,24 +75,24 @@ public class MainActivity extends AppCompatActivity {
             btnProviders.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_storefront_24, getTheme()));
         }
         //Open the actual page and highlight its button
-        LinearLayout homescreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
-        ScrollView products = (ScrollView) findViewById(R.id.ScrollViewProducts);
-        ScrollView providers = (ScrollView) findViewById(R.id.ScrollViewProviders);
-        homescreen.setVisibility(View.GONE);
-        products.setVisibility(View.GONE);
-        providers.setVisibility(View.GONE);
+        LinearLayout homeScreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
+        LinearLayout productsScreen = (LinearLayout) findViewById(R.id.LinearLayoutProducts);
+        LinearLayout providersScreen = (LinearLayout) findViewById(R.id.LinearLayoutProviders);
+        homeScreen.setVisibility(View.GONE);
+        productsScreen.setVisibility(View.GONE);
+        providersScreen.setVisibility(View.GONE);
         switch (name) {
             case "homescreen":
                 btnHome.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_home_24, getTheme()));
-                homescreen.setVisibility(View.VISIBLE);
+                homeScreen.setVisibility(View.VISIBLE);
                 break;
             case "products":
                 btnProducts.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_shopping_cart_24, getTheme()));
-                products.setVisibility(View.VISIBLE);
+                productsScreen.setVisibility(View.VISIBLE);
                 break;
             case "providers":
                 btnProviders.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_storefront_24, getTheme()));
-                providers.setVisibility(View.VISIBLE);
+                providersScreen.setVisibility(View.VISIBLE);
                 break;
         }
     }
