@@ -3,6 +3,7 @@ package com.number1.phonetic;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setElevation(0);
         actionBar.setIcon(R.drawable.ic_simple_square);
+        RecyclerView rvProducts = findViewById(R.id.rvProducts);
+        rvProducts.setHasFixedSize(true);
         //TODO: Change actionBar color to AMOLED black in dark mode
         //TODO: Make the ActionBar text black in light mode, but keep it white in dark mode
         //TODO: SetOnClickListener on ImageButtons

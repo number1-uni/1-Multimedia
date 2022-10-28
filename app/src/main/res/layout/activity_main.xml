@@ -92,7 +92,8 @@
             <HorizontalScrollView
                 android:id="@+id/productshScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 tools:ignore="SpeakableTextPresentCheck">
 
                 <LinearLayout
@@ -154,53 +155,52 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/ScrollViewProducts"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:visibility="gone"
-        tools:ignore="SpeakableTextPresentCheck">
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtTitleProducts"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:orientation="vertical">
+            android:text="@string/products"
+            android:textSize="48sp" />
 
-            <TextView
-                android:id="@+id/txtTitleProducts"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="@string/products"
-                android:textSize="48sp" />
-        </LinearLayout>
-    </ScrollView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProducts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
+    </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/ScrollViewProviders"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:visibility="gone"
-        tools:ignore="SpeakableTextPresentCheck">
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtTitleProviders"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:orientation="vertical">
+            android:text="@string/providers"
+            android:textSize="48sp" />
 
-            <TextView
-                android:id="@+id/txtTitleProviders"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="@string/providers"
-                android:textSize="48sp" />
-        </LinearLayout>
-    </ScrollView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutNav"
