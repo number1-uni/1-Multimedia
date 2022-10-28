@@ -2,7 +2,9 @@ package com.number1.phonetic;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setElevation(0);
         actionBar.setIcon(R.drawable.ic_simple_square);
-        //TODO: Change icons and actionBar colors in dark mode
+        //TODO: Change actionBar color to AMOLED black in dark mode
         //TODO: Make the ActionBar text black in light mode, but keep it white in dark mode
-
         //TODO: SetOnClickListener on ImageButtons
         /*
         ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
@@ -41,50 +42,53 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     public void openHome(View view) {
-        LinearLayout homescreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
-        ScrollView products = (ScrollView) findViewById(R.id.ScrollViewProducts);
-        ScrollView providers = (ScrollView) findViewById(R.id.ScrollViewProviders);
-        ImageButton btnHome = (ImageButton) findViewById(R.id.btnHome);
-        ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
-        ImageButton btnProviders = (ImageButton) findViewById(R.id.btnProviders);
-        homescreen.setVisibility(View.VISIBLE);
-        products.setVisibility(View.GONE);
-        providers.setVisibility(View.GONE);
-        btnHome.setImageDrawable(getResources().getDrawable(R.drawable.ic_round_home_24, getTheme()));
-        btnProducts.setImageDrawable(getResources().getDrawable(R.drawable.ic_outline_shopping_cart_24, getTheme()));
-        btnProviders.setImageDrawable(getResources().getDrawable(R.drawable.ic_outline_storefront_24, getTheme()));
+        open(view, "homescreen");
     }
 
     public void openProducts(View view) {
-        LinearLayout homescreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
-        ScrollView products = (ScrollView) findViewById(R.id.ScrollViewProducts);
-        ScrollView providers = (ScrollView) findViewById(R.id.ScrollViewProviders);
-        ImageButton btnHome = (ImageButton) findViewById(R.id.btnHome);
-        ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
-        ImageButton btnProviders = (ImageButton) findViewById(R.id.btnProviders);
-        //TODO: add providers
-        homescreen.setVisibility(View.GONE);
-        products.setVisibility(View.VISIBLE);
-        providers.setVisibility(View.GONE);
-        btnHome.setImageDrawable(getResources().getDrawable(R.drawable.ic_outline_home_24, getTheme()));
-        btnProducts.setImageDrawable(getResources().getDrawable(R.drawable.ic_round_shopping_cart_24, getTheme()));
-        btnProviders.setImageDrawable(getResources().getDrawable(R.drawable.ic_outline_storefront_24, getTheme()));
+        open(view, "products");
     }
 
     public void openProviders(View view) {
-        LinearLayout homescreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
-        ScrollView products = (ScrollView) findViewById(R.id.ScrollViewProducts);
-        ScrollView providers = (ScrollView) findViewById(R.id.ScrollViewProviders);
+        open(view, "providers");
+    }
+
+    public void open(View view, String name) {
+        //Change icon colors
         ImageButton btnHome = (ImageButton) findViewById(R.id.btnHome);
         ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
         ImageButton btnProviders = (ImageButton) findViewById(R.id.btnProviders);
+        int nightModeFlags = view.getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK; //if dark mode is enabled
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) { //change icon colors to white
+            btnHome.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_home_white_24, getTheme()));
+            btnProducts.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_shopping_cart_white_24, getTheme()));
+            btnProviders.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_storefront_white_24, getTheme()));
+        } else { //change all icons to black
+            btnHome.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_home_24, getTheme()));
+            btnProducts.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_shopping_cart_24, getTheme()));
+            btnProviders.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_outline_storefront_24, getTheme()));
+        }
+        //Open the actual page and highlight its button
+        LinearLayout homescreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
+        ScrollView products = (ScrollView) findViewById(R.id.ScrollViewProducts);
+        ScrollView providers = (ScrollView) findViewById(R.id.ScrollViewProviders);
         homescreen.setVisibility(View.GONE);
         products.setVisibility(View.GONE);
-        providers.setVisibility(View.VISIBLE);
-        btnHome.setImageDrawable(getResources().getDrawable(R.drawable.ic_outline_home_24, getTheme()));
-        btnProducts.setImageDrawable(getResources().getDrawable(R.drawable.ic_outline_shopping_cart_24, getTheme()));
-        btnProviders.setImageDrawable(getResources().getDrawable(R.drawable.ic_round_storefront_24, getTheme()));
+        providers.setVisibility(View.GONE);
+        switch (name) {
+            case "homescreen":
+                btnHome.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_home_24, getTheme()));
+                homescreen.setVisibility(View.VISIBLE);
+                break;
+            case "products":
+                btnProducts.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_shopping_cart_24, getTheme()));
+                products.setVisibility(View.VISIBLE);
+                break;
+            case "providers":
+                btnProviders.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_storefront_24, getTheme()));
+                providers.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 }
