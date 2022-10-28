@@ -1,9 +1,13 @@
 package com.number1.phonetic;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Database {
 
@@ -20,6 +24,16 @@ public class Database {
     {
         connect();
         System.out.println("connection status:" + status);
+    }
+
+    public static Connection connecta() {
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
     }
 
     private void connect()
@@ -53,5 +67,22 @@ public class Database {
             e.printStackTrace();
             this.status = false;
         }
+    }
+
+    public static void LogIn(String usuario, String password){
+        String taula = "erabiltzaileak";
+        String sql = "SELECT * FROM " + taula + "WHERE user ='" + usuario + "' AND password = '" + password + "';";
+
+        try (Connection conn = connecta();
+             Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next() == true) {
+                String a = null;
+                Log.d( a , "eginda");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
