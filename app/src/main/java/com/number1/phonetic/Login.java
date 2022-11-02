@@ -6,33 +6,50 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     Button loginButton;
-    String user, pass;
-
+    EditText user, pass;
+    String strUser, strPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Database connection = new Database();
 
-        user = findViewById(R.id.userText).toString();
-        pass = findViewById(R.id.passText).toString();
+        user = findViewById(R.id.userText);
+        pass = findViewById(R.id.passText);
 
         loginButton = findViewById(R.id.logButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //connection.LogIn(user, pass);
-                createNew();
+                verify();
             }
         });
     }
-    public void createNew(){
-        Intent intent = new Intent(this, MainActivity.class);
+
+    private void verify(){
+        Database connection = new Database();
+
+        strUser = user.getText().toString();
+        strPass = pass.getText().toString();
+        connection.LogIn(strUser, strPass);
+
+        if(connection.getEstado()){
+            Toast.makeText(Login.this, "Log in ...", Toast.LENGTH_SHORT).show();
+            createNew();
+        } else{
+            Toast.makeText(Login.this, "User or password incorrect", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void createNew(){
+        Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
         startActivity(intent);
     }
 

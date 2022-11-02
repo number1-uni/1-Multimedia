@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.content.Intent;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setIcon(R.drawable.ic_simple_square);
         RecyclerView rvProducts = findViewById(R.id.rvProducts);
         rvProducts.setHasFixedSize(true);
+
+
+
+
         //TODO: Change actionBar color to AMOLED black in dark mode
         //TODO: Make the ActionBar text black in light mode, but keep it white in dark mode
         //TODO: SetOnClickListener on ImageButtons
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
          */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
     }
 
     public void openHome(View view) {
