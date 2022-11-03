@@ -1,5 +1,6 @@
 package com.number1.phonetic;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,12 +17,16 @@ public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setElevation(0);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        user = findViewById(R.id.userText);
-        pass = findViewById(R.id.passText);
+        user = findViewById(R.id.userEmail);
+        pass = findViewById(R.id.userPass);
 
         loginButton = findViewById(R.id.logButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
