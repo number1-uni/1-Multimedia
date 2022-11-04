@@ -1,9 +1,16 @@
 package com.number1.phonetic;
 
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Database {
 
@@ -14,44 +21,78 @@ public class Database {
     private static final String user = "MP"; // !IMPORTANT! username
     private static final String password = "admin"; // !IMPORTANT! password
 
-    private boolean status;
+    private static boolean status;
+    private static boolean estado;
+    static Connection conn = null;
 
-    public Database()
-    {
+    public Database() {
         connect();
         System.out.println("connection status:" + status);
     }
 
-    private void connect()
-    {
+    public boolean getEstado() {
+        return estado;
+    }
+
+    private static Connection connect() {
         Thread thread = new Thread(new Runnable() {
             @Override
-            public void run()
-            {
-                try
-                {
+            public void run() {
+                try {
                     Class.forName("org.postgresql.Driver");
-                    connection = DriverManager.getConnection(url, user, password);
+                    conn = DriverManager.getConnection(url, user, password);
                     status = true;
                     Log.i("konexioa", "DB connected:" + true);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     status = false;
-                    System.out.print(e.getMessage());
+                    Log.w("konexioa", e.getMessage());
                     e.printStackTrace();
                 }
             }
         });
         thread.start();
-        try
-        {
+        try {
             thread.join();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            this.status = false;
+            status = false;
+        }
+        return conn;
+    }
+
+    public static void LogIn(String user, String password) {
+
+        String sql = "SELECT erabiltzaileak.user, password FROM public.erabiltzaileak WHERE erabiltzaileak.user='" + user + "' AND erabiltzaileak.password = '" + password + "'";
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try (Connection conn = connect();
+                     PreparedStatement stmt = conn.prepareStatement(sql);
+                     ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        String strUser = rs.getString("user");
+                        String strPass = rs.getString("password");
+
+                        if (strUser.equals(user) && strPass.equals(password)) {
+                            estado = true;
+                            break;
+                        } else {
+                            estado = false;
+                        }
+                    }
+                } catch (SQLException e) {
+                    Log.e("Datu basea", e.getMessage());
+                }
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+            estado = false;
         }
     }
+
 }

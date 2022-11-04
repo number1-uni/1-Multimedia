@@ -11,10 +11,37 @@
     android:orientation="vertical"
     tools:visibility="visible">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_simple_square" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/app_name"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/LinearLayoutHomescreen"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
         android:visibility="visible">
@@ -28,10 +55,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtTitle"
+                android:id="@+id/txtTitleLogin"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/greeting"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="48sp" />
 
             <TextView
@@ -39,13 +67,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="lorem ipsum etc etc"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="lorem ipsum " />
+                android:text="lorem ipsum "
+                android:textColor="?attr/colorOnPrimary" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,6 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/products"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +109,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:elevation="0dp"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/manropemedium"
                     android:onClick="openProducts"
                     android:shadowColor="#00FFFFFF"
                     android:text="@string/viewmore"
@@ -121,7 +152,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:elevation="0dp"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/manropemedium"
                     android:onClick="openProviders"
                     android:shadowColor="#00FFFFFF"
                     android:text="@string/viewmore"
@@ -135,6 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/providers"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -156,6 +188,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/LinearLayoutProductsView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -169,6 +202,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:text="@string/products"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="48sp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -180,6 +214,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/LinearLayoutProvidersView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -193,6 +228,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:text="@string/providers"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="48sp" />
 
         <androidx.recyclerview.widget.RecyclerView

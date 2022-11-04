@@ -9,4 +9,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="viewmore">View more →</string>
+    <string name="name1" translatable="false">Name1</string>
+    <string name="name" translatable="false">Name</string>
+    <string name="icon_login" translatable="false">icon_login</string>
 </resources>
