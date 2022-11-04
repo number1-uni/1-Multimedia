@@ -30,7 +30,7 @@ public class Database {
         System.out.println("connection status:" + status);
     }
 
-    public boolean getEstado(){
+    public boolean getEstado() {
         return estado;
     }
 
@@ -60,40 +60,29 @@ public class Database {
         return conn;
     }
 
-    public static void LogIn(String user, String password){
+    public static void LogIn(String user, String password) {
 
+        String sql = "SELECT erabiltzaileak.user, password FROM public.erabiltzaileak WHERE erabiltzaileak.user='" + user + "' AND erabiltzaileak.password = '" + password + "'";
 
-       /*
-         * Ez da modu egokiena. Begiratu egin behar da.
-         * sql2 sententziak ez du funtzionatzen, pkadmin-en
-         * exekutatuta bai.
-         * Kodigoan ez du hurrengoa "existitzen" dela hartzen
-         * rs.next().
-         */
-
-       String taula = "erabiltzaileak";
-       String sql = "SELECT * FROM public." + taula + ";";
-       //String sql2 = "SELECT * FROM public." + taula + " WHERE user = '" + user + "' AND password = '" + password + "';";
-
-       Thread thread = new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try (Connection conn = connect();
-                    PreparedStatement stmt = conn.prepareStatement(sql);
-                    ResultSet rs = stmt.executeQuery()) {
+                     PreparedStatement stmt = conn.prepareStatement(sql);
+                     ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()) {
                         String strUser = rs.getString("user");
                         String strPass = rs.getString("password");
 
-                        if(strUser.equals(user) && strPass.equals(password) ){
+                        if (strUser.equals(user) && strPass.equals(password)) {
                             estado = true;
                             break;
-                        } else{
+                        } else {
                             estado = false;
                         }
                     }
                 } catch (SQLException e) {
-                    System.out.println(e.getMessage());
+                    Log.e("Datu basea", e.getMessage());
                 }
             }
         });
