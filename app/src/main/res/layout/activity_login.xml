@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:contentDescription="@string/icon_login"
             app:layout_constraintBottom_toBottomOf="@+id/txtTitleLogin"
             app:layout_constraintStart_toStartOf="@+id/txtTitleWelcome"
@@ -32,7 +32,7 @@
             android:fontFamily="@font/manroperegular"
             android:text="@string/app_name"
             android:textColor="?attr/colorOnPrimary"
-            android:textSize="35sp"
+            android:textSize="25sp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,7 @@
             android:paddingTop="0dp"
             android:text="@string/welcome"
             android:textColor="?attr/colorOnPrimary"
-            android:textSize="48sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/userText"
             app:layout_constraintTop_toBottomOf="@+id/txtTitleLogin" />
@@ -84,7 +84,7 @@
             android:id="@+id/passText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/manropemedium"
             android:text="@string/password"
             android:textColor="?attr/colorOnPrimary"
@@ -95,7 +95,7 @@
         <EditText
             android:id="@+id/userPass"
             android:layout_width="0dp"
-            android:layout_height="49dp"
+            android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:autofillHints=""
             android:background="#D9D9D9"
@@ -113,7 +113,7 @@
             android:id="@+id/logButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:elevation="5dp"
             android:fontFamily="@font/manropemedium"
             android:paddingTop="15dp"
