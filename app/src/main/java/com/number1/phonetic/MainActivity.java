@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         RecyclerView rvProducts = findViewById(R.id.rvProducts);
-        rvProducts.setHasFixedSize(true);
         //TODO: SetOnClickListener on ImageButtons
         /*
         ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
          */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
     }
 
     public void openHome(View view) {
@@ -69,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         }
         //Open the actual page and highlight its button
         LinearLayout homeScreen = (LinearLayout) findViewById(R.id.LinearLayoutHomescreen);
-        LinearLayout productsScreen = (LinearLayout) findViewById(R.id.LinearLayoutProducts);
-        LinearLayout providersScreen = (LinearLayout) findViewById(R.id.LinearLayoutProviders);
+        LinearLayout productsScreen = (LinearLayout) findViewById(R.id.LinearLayoutProductsView);
+        LinearLayout providersScreen = (LinearLayout) findViewById(R.id.LinearLayoutProvidersView);
         homeScreen.setVisibility(View.GONE);
         productsScreen.setVisibility(View.GONE);
         providersScreen.setVisibility(View.GONE);

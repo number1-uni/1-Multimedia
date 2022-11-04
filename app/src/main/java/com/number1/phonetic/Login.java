@@ -36,13 +36,14 @@ public class Login extends AppCompatActivity {
         if(connection.getEstado()){
             Toast.makeText(Login.this, "Log in ...", Toast.LENGTH_SHORT).show();
             createNew();
+            finish();
         } else{
             Toast.makeText(Login.this, "User or password incorrect", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void createNew(){
-        Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 }
