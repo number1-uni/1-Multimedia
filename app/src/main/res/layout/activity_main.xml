@@ -16,10 +16,11 @@
         android:layout_height="60dp">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/appIcon"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
+            android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +35,7 @@
             android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/appIcon"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -105,6 +106,7 @@
 
                 <Button
                     android:id="@+id/btnViewMoreProducts"
+                    android:theme="@style/Button.WithTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -148,6 +150,7 @@
 
                 <Button
                     android:id="@+id/btnViewMoreProviders"
+                    android:theme="@style/Button.WithTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"

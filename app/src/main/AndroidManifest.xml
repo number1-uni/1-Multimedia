@@ -16,14 +16,6 @@
         android:theme="@style/Theme.PhoneTic"
         tools:targetApi="31">
         <activity
-            android:name=".SecondActivity"
-            android:exported="false"
-            android:parentActivityName=".Login">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Login" />
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
 

@@ -16,7 +16,7 @@
         <item name="android:navigationBarColor">?attr/colorSecondary</item>
     </style>
 
-    <style name="Button.purple" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/purple_200</item>
+    <style name="Button.WithTheme" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@android:color/black</item>
     </style>
 </resources>
