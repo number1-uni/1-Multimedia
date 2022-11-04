@@ -28,21 +28,21 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void verify(){
+    private void verify() {
         Database connection = new Database();
         strUser = user.getText().toString();
         strPass = pass.getText().toString();
         connection.LogIn(strUser, strPass);
-        if(connection.getEstado()){
+        if (connection.getEstado()) {
             Toast.makeText(Login.this, "Log in ...", Toast.LENGTH_SHORT).show();
             createNew();
             finish();
-        } else{
+        } else {
             Toast.makeText(Login.this, "User or password incorrect", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void createNew(){
+    private void createNew() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
