@@ -19,34 +19,37 @@
 
             <ImageView
                 android:id="@+id/imgProduktua"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
                 tools:ignore="ImageContrastCheck"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txtPrIzena"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/manropemedium"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:text="izena"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="34sp" />
 
                 <TextView
                     android:id="@+id/txtPrHornitzailea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/manroperegular"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:text="hornitzailea"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="20sp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,9 +60,11 @@
                         android:id="@+id/txtPrStock"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/manroperegular"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="stock"
+                        android:textColor="?android:attr/textColorSecondary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -68,9 +73,11 @@
                         android:id="@+id/txtPrPrezioa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/manropemedium"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="0,00€"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
