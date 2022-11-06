@@ -1,5 +1,6 @@
 package com.number1.phonetic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,10 +9,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.content.Intent;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -86,6 +90,40 @@ public class MainActivity extends AppCompatActivity {
                 btnProviders.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_round_storefront_24, getTheme()));
                 providersScreen.setVisibility(View.VISIBLE);
                 break;
+        }
+    }
+
+
+    /*
+     * Oraingoz erroreak eman besterik ez du egiten.
+     */
+
+    private class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterHolder> {
+        @NonNull
+        @Override
+        public ProductAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new ProductAdapterHolder(getLayoutInflater().inflate(R.layout.product_list_v, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ProductAdapterHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+
+        class ProductAdapterHolder extends RecyclerView.ViewHolder {
+            public ProductAdapterHolder(View itemView) {
+                super(itemView);
+                ImageView imgProduktua = itemView.findViewById(R.id.imgProduktua);
+                TextView txtPrIzena = itemView.findViewById(R.id.txtPrIzena);
+                TextView txtPrHornitzailea = itemView.findViewById(R.id.txtPrHornitzailea);
+                TextView txtPrPrezioa = itemView.findViewById(R.id.txtPrPrezioa);
+                TextView txtPrStock = itemView.findViewById(R.id.txtPrStock);
+            }
         }
     }
 }
