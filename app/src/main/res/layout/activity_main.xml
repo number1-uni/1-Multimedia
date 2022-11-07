@@ -165,10 +165,10 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtProviders"
+                    android:id="@+id/txtSuppliers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/providers"
+                    android:text="@string/suppliers"
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -230,7 +230,7 @@
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="@string/providers"
+            android:text="@string/suppliers"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="48sp" />
 
@@ -276,7 +276,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#00FFFFFF"
-            android:contentDescription="@string/providers"
+            android:contentDescription="@string/suppliers"
             android:onClick="openProviders"
             app:srcCompat="@drawable/ic_outline_storefront_24"
             tools:ignore="DuplicateSpeakableTextCheck" />

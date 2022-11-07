@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
         Database connection = new Database();
         strUser = user.getText().toString();
         strPass = pass.getText().toString();
-        connection.LogIn(strUser, strPass);
+        Database.LogIn(strUser, strPass);
         if (connection.getEstado()) {
             Toast.makeText(Login.this, "Log in ...", Toast.LENGTH_SHORT).show();
             createNew();

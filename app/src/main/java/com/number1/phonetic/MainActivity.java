@@ -7,14 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.content.Intent;
 import android.widget.TextView;
 
 
@@ -96,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
     /*
      * Oraingoz erroreak eman besterik ez du egiten.
+     * ProductAdapterrera mugitu dut!!
      */
 
+    /*
     private class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterHolder> {
         @NonNull
         @Override
@@ -118,12 +117,12 @@ public class MainActivity extends AppCompatActivity {
         class ProductAdapterHolder extends RecyclerView.ViewHolder {
             public ProductAdapterHolder(View itemView) {
                 super(itemView);
-                ImageView imgProduktua = itemView.findViewById(R.id.imgProduktua);
-                TextView txtPrIzena = itemView.findViewById(R.id.txtPrIzena);
-                TextView txtPrHornitzailea = itemView.findViewById(R.id.txtPrHornitzailea);
+                ImageView imgProduktua = itemView.findViewById(R.id.imgHornitzailea);
+                TextView txtPrIzena = itemView.findViewById(R.id.txtHrIzena);
                 TextView txtPrPrezioa = itemView.findViewById(R.id.txtPrPrezioa);
-                TextView txtPrStock = itemView.findViewById(R.id.txtPrStock);
+                TextView txtPrStock = itemView.findViewById(R.id.txtHrEmail);
             }
         }
     }
+    */
 }
