@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.number1.phonetic.model.Products;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -95,4 +97,21 @@ public class Database {
         }
     }
 
+    public static Products grabProducts() {
+        String table = "product_template";
+        String sql = "SELECT * FROM " + table;
+
+        try(Connection conn = connect();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery()) {
+            Products products = new Products();
+            while (rs.next()) {
+                products.add(new com.number1.phonetic.model.Product(rs.getString("name"), rs.getInt("id"), rs.getDouble("list_price")));
+            }
+            return products;
+        } catch (SQLException e) {
+            Log.e("Datu basea", e.getMessage());
+        }
+        return null;
+    }
 }

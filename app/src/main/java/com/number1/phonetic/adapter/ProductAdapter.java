@@ -36,13 +36,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView txtPrIzena;
-        TextView txtPrStock;
         TextView txtPrPrezioa;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.imgProduktua);
             txtPrIzena = itemView.findViewById(R.id.txtPrIzena);
-            txtPrStock = itemView.findViewById(R.id.txtPrStock);
             txtPrPrezioa = itemView.findViewById(R.id.txtPrPrezioa);
         }
     }
