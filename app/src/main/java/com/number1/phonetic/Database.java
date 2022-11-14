@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.number1.phonetic.model.Product;
 import com.number1.phonetic.model.Products;
 
 import java.sql.CallableStatement;
@@ -13,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Database {
 
@@ -97,20 +99,21 @@ public class Database {
         }
     }
 
-    public static Products grabProducts() {
-        String table = "product_template";
+    public static ArrayList<Product> grabProducts(ArrayList<Product> products) {
+        String table = "public.product_template";
         String sql = "SELECT * FROM " + table;
 
-        try(Connection conn = connect();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery()) {
-            Products products = new Products();
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 products.add(new com.number1.phonetic.model.Product(rs.getString("name"), rs.getInt("id"), rs.getDouble("list_price")));
             }
             return products;
         } catch (SQLException e) {
-            Log.e("Datu basea", e.getMessage());
+            //Log.e("Datu basea", e.getMessage());
+        } catch (Exception e) {
+            //Log.e("Datu basea", e.getMessage());
         }
         return null;
     }

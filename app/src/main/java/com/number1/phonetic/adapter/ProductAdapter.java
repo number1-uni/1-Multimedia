@@ -1,5 +1,6 @@
 package com.number1.phonetic.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.number1.phonetic.MainActivity;
 import com.number1.phonetic.R;
+import com.number1.phonetic.model.Product;
+
+import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    public ProductAdapter() {
+    ArrayList<Product> products;
+    Context context;
+
+    public ProductAdapter(ArrayList<Product> products, MainActivity activity) {
+        this.products = products;
+        this.context = activity;
+    }
+
+    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
+        final Product product = products.get(position);
+        holder.txtPrIzena.setText(product.getName());
+        holder.txtPrPrezioa.setText(String.valueOf(product.getPrice()));
+        holder.imgProduct.setImageResource(R.drawable.ic_launcher_background);
     }
 
     @NonNull
@@ -24,13 +41,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-    }
-
-    @Override
     public int getItemCount() {
-        return 0;
+        return products.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

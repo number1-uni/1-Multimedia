@@ -13,13 +13,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.number1.phonetic.adapter.ProductAdapter;
+import com.number1.phonetic.model.Product;
+
+import java.lang.reflect.GenericArrayType;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        RecyclerView rvProducts = findViewById(R.id.rvProducts);
         //TODO: SetOnClickListener on ImageButtons
         /*
         ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
@@ -38,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Intent intent = getIntent();
+        ArrayList<Product> products = new ArrayList<>();
+        if(Database.grabProducts(products) != null) {
+            createContent(products);
+        }
+
     }
 
     public void openHome(View view) {
@@ -88,41 +99,15 @@ public class MainActivity extends AppCompatActivity {
                 providersScreen.setVisibility(View.VISIBLE);
                 break;
         }
+
     }
 
-
-    /*
-     * Oraingoz erroreak eman besterik ez du egiten.
-     * ProductAdapterrera mugitu dut!!
-     */
-
-    /*
-    private class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterHolder> {
-        @NonNull
-        @Override
-        public ProductAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new ProductAdapterHolder(getLayoutInflater().inflate(R.layout.product_list_v, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull ProductAdapterHolder holder, int position) {
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return 0;
-        }
-
-        class ProductAdapterHolder extends RecyclerView.ViewHolder {
-            public ProductAdapterHolder(View itemView) {
-                super(itemView);
-                ImageView imgProduktua = itemView.findViewById(R.id.imgHornitzailea);
-                TextView txtPrIzena = itemView.findViewById(R.id.txtHrIzena);
-                TextView txtPrPrezioa = itemView.findViewById(R.id.txtPrPrezioa);
-                TextView txtPrStock = itemView.findViewById(R.id.txtHrEmail);
-            }
+    public void createContent(ArrayList<Product> products) {
+        try {
+            RecyclerView rvProducts = findViewById(R.id.rvProducts);
+            rvProducts.setAdapter(new ProductAdapter(products, this));
+        } catch (Exception e) {
+            Toast.makeText(this, "RecyclerView error", Toast.LENGTH_SHORT).show();
         }
     }
-    */
 }
