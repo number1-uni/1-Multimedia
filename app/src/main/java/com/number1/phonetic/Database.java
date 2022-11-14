@@ -101,19 +101,28 @@ public class Database {
 
     public static ArrayList<Product> grabProducts(ArrayList<Product> products) {
         String table = "public.product_template";
-        String sql = "SELECT * FROM " + table;
+        String sql = "SELECT * FROM public.product_template";
 
-        try (Connection conn = connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                products.add(new com.number1.phonetic.model.Product(rs.getString("name"), rs.getInt("id"), rs.getDouble("list_price")));
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try (Connection conn = connect();
+                     PreparedStatement stmt = conn.prepareStatement(sql);
+                     ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        products.add(new com.number1.phonetic.model.Product(rs.getString("name"), rs.getInt("id"), rs.getDouble("list_price")));
+                    }
+                } catch (SQLException e) {
+                    Log.e("Datu basea", e.getMessage());
+                }
             }
-            return products;
-        } catch (SQLException e) {
-            //Log.e("Datu basea", e.getMessage());
+        });
+        thread.start();
+        try {
+            thread.join();
         } catch (Exception e) {
-            //Log.e("Datu basea", e.getMessage());
+            e.printStackTrace();
+            estado = false;
         }
         return null;
     }
