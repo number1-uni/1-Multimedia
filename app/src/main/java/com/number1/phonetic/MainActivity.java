@@ -3,12 +3,14 @@ package com.number1.phonetic;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.number1.phonetic.adapter.ProductAdapter;
+import com.number1.phonetic.adapter.ProductAdapterH;
 import com.number1.phonetic.model.Product;
 
 import java.lang.reflect.GenericArrayType;
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         if(Database.grabProducts(products) != null) {
             createContent(products);
         }
-
     }
 
     public void openHome(View view) {
@@ -105,7 +107,11 @@ public class MainActivity extends AppCompatActivity {
     public void createContent(ArrayList<Product> products) {
         try {
             RecyclerView rvProducts = findViewById(R.id.rvProducts);
+            rvProducts.setLayoutManager(new LinearLayoutManager(this));
             rvProducts.setAdapter(new ProductAdapter(products, this));
+            RecyclerView rvProductsH = findViewById(R.id.rvProductsH);
+            rvProductsH.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            rvProductsH.setAdapter(new ProductAdapterH(products, this));
         } catch (Exception e) {
             Toast.makeText(this, "RecyclerView error", Toast.LENGTH_SHORT).show();
         }

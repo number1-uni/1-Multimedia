@@ -5,7 +5,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.number1.phonetic.model.Product;
-import com.number1.phonetic.model.Products;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -101,7 +100,7 @@ public class Database {
 
     public static ArrayList<Product> grabProducts(ArrayList<Product> products) {
         String table = "public.product_template";
-        String sql = "SELECT * FROM public.product_template";
+        String sql = "SELECT * FROM " + table;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -124,6 +123,6 @@ public class Database {
             e.printStackTrace();
             estado = false;
         }
-        return null;
+        return products;
     }
 }

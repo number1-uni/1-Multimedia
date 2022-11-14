@@ -83,7 +83,7 @@
             android:id="@+id/LinearLayoutProducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,7 +106,6 @@
 
                 <Button
                     android:id="@+id/btnViewMoreProducts"
-                    android:theme="@style/Button.WithTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -116,23 +115,19 @@
                     android:shadowColor="#00FFFFFF"
                     android:text="@string/viewmore"
                     android:textAllCaps="false"
+                    android:theme="@style/Button.WithTheme"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="DuplicateSpeakableTextCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <HorizontalScrollView
-                android:id="@+id/productshScrollView"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductsH"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:ignore="SpeakableTextPresentCheck">
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-            </HorizontalScrollView>
         </LinearLayout>
 
         <LinearLayout

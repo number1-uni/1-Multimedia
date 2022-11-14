@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="10dp">
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,6 +30,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="?attr/colorSecondaryVariant"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -34,12 +38,16 @@
                     android:id="@+id/txtPrIzena"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
                     android:fontFamily="@font/manropemedium"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="1"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:text="izena"
                     android:textColor="?attr/colorOnPrimary"
-                    android:textSize="34sp" />
+                    android:textSize="28sp" />
 
                 <TextView
                     android:id="@+id/txtPrPrezioa"
@@ -51,7 +59,7 @@
                     android:text="0,00€"
                     android:textAlignment="textStart"
                     android:textColor="?attr/colorOnPrimary"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>
