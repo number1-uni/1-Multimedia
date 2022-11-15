@@ -19,7 +19,10 @@ import android.widget.Toast;
 
 import com.number1.phonetic.adapter.ProductAdapter;
 import com.number1.phonetic.adapter.ProductAdapterH;
+import com.number1.phonetic.adapter.SupplierAdapter;
+import com.number1.phonetic.adapter.SupplierAdapterH;
 import com.number1.phonetic.model.Product;
+import com.number1.phonetic.model.Supplier;
 
 import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
@@ -48,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Intent intent = getIntent();
         ArrayList<Product> products = new ArrayList<>();
-        if(Database.grabProducts(products) != null) {
-            createContent(products);
-        }
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+        Database.grabProducts(products);
+        Database.grabSuppliers(suppliers);
+        createContent(products, suppliers);
     }
 
     public void openHome(View view) {
@@ -104,14 +108,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void createContent(ArrayList<Product> products) {
+    public void createContent(ArrayList<Product> products, ArrayList<Supplier> suppliers) {
         try {
             RecyclerView rvProducts = findViewById(R.id.rvProducts);
             rvProducts.setLayoutManager(new LinearLayoutManager(this));
             rvProducts.setAdapter(new ProductAdapter(products, this));
+
             RecyclerView rvProductsH = findViewById(R.id.rvProductsH);
             rvProductsH.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             rvProductsH.setAdapter(new ProductAdapterH(products, this));
+
+            RecyclerView rvSuppliers = findViewById(R.id.rvProviders);
+            rvSuppliers.setLayoutManager(new LinearLayoutManager(this));
+            rvSuppliers.setAdapter(new SupplierAdapter(suppliers, this));
+            /*
+            RecyclerView rvSuppliersH = findViewById(R.id.rvSuppliersH);
+            rvSuppliersH.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            rvSuppliersH.setAdapter(new SupplierAdapterH(suppliers, this));
+            */
         } catch (Exception e) {
             Toast.makeText(this, "RecyclerView error", Toast.LENGTH_SHORT).show();
         }

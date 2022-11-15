@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:fontFamily="@font/manropemedium"
             android:text="@string/app_name"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp"
@@ -59,6 +60,7 @@
                 android:id="@+id/txtTitleLogin"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:fontFamily="@font/manropesemibold"
                 android:text="@string/greeting"
                 android:textColor="?attr/colorOnPrimary"
                 android:textSize="48sp" />
@@ -67,6 +69,7 @@
                 android:id="@+id/txtDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/manroperegular"
                 android:text="lorem ipsum etc etc"
                 android:textColor="?attr/colorOnPrimary"
                 android:textSize="20sp" />
@@ -75,6 +78,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/manroperegular"
                 android:text="lorem ipsum "
                 android:textColor="?attr/colorOnPrimary" />
         </LinearLayout>
@@ -163,6 +167,7 @@
                     android:id="@+id/txtSuppliers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/manropemedium"
                     android:text="@string/suppliers"
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="20sp"
@@ -171,16 +176,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <HorizontalScrollView
-                android:id="@+id/providershScrollView"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSuppliersH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="SpeakableTextPresentCheck">
+                android:orientation="horizontal" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-            </HorizontalScrollView>
         </LinearLayout>
 
     </LinearLayout>
@@ -196,9 +197,11 @@
         <TextView
             android:id="@+id/txtTitleProducts"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:fontFamily="@font/manropesemibold"
+            android:paddingBottom="5dp"
             android:text="@string/products"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="48sp" />
@@ -222,9 +225,11 @@
         <TextView
             android:id="@+id/txtTitleProviders"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:fontFamily="@font/manropesemibold"
+            android:paddingBottom="5dp"
             android:text="@string/suppliers"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="48sp" />
