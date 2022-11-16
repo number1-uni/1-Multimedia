@@ -9,4 +9,5 @@
     <string name="username">Erabiltzailea</string>
     <string name="password">Pasahitza</string>
     <string name="viewmore">Ikusi gehiago →</string>
+    <string name="loggedAs">gisa sartuta zaude</string>
 </resources>

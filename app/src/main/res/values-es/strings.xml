@@ -9,4 +9,5 @@
     <string name="username">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="viewmore">Ver más →</string>
+    <string name="loggedAs">Estás identificado como</string>
 </resources>

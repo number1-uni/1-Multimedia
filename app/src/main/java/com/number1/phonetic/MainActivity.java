@@ -121,11 +121,11 @@ public class MainActivity extends AppCompatActivity {
             RecyclerView rvSuppliers = findViewById(R.id.rvProviders);
             rvSuppliers.setLayoutManager(new LinearLayoutManager(this));
             rvSuppliers.setAdapter(new SupplierAdapter(suppliers, this));
-            /*
+
             RecyclerView rvSuppliersH = findViewById(R.id.rvSuppliersH);
             rvSuppliersH.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             rvSuppliersH.setAdapter(new SupplierAdapterH(suppliers, this));
-            */
+
         } catch (Exception e) {
             Toast.makeText(this, "RecyclerView error", Toast.LENGTH_SHORT).show();
         }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,15 +30,15 @@ public class SupplierAdapterH extends RecyclerView.Adapter<SupplierAdapterH.View
     @Override
     public SupplierAdapterH.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.supplier_list_v, parent, false);
+        View view = inflater.inflate(R.layout.supplier_list_h, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SupplierAdapterH.ViewHolder holder, int position) {
         final Supplier supplier = suppliers.get(position);
-        holder.tv.setText(supplier.getName());
-        holder.iv.setImageResource(R.drawable.ic_launcher_background);
+        holder.tvSupplierH.setText(supplier.getName());
+        holder.ivSupplierH.setImageResource(R.drawable.ic_launcher_background);
     }
 
     @Override
@@ -50,13 +51,13 @@ public class SupplierAdapterH extends RecyclerView.Adapter<SupplierAdapterH.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView iv;
-        TextView tv;
+        ImageView ivSupplierH;
+        TextView tvSupplierH;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iv = itemView.findViewById(R.id.ivSupplierH);
-            tv = itemView.findViewById(R.id.tvSupplierH);
+            ivSupplierH = itemView.findViewById(R.id.ivSupplierH);
+            tvSupplierH = itemView.findViewById(R.id.tvSupplierH);
         }
     }
 }
