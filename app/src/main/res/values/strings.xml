@@ -3,7 +3,7 @@
     <string name="greeting">Hello!</string>
     <string name="home">Home</string>
     <string name="products">Products</string>
-    <string name="providers">Providers</string>
+    <string name="suppliers">Suppliers</string>
     <string name="welcome">Welcome!</string>
     <string name="login">Log in</string>
     <string name="username">Username</string>
@@ -12,4 +12,5 @@
     <string name="name1" translatable="false">Name1</string>
     <string name="name" translatable="false">Name</string>
     <string name="icon_login" translatable="false">icon_login</string>
+    <string name="loggedAs">You\'re logged in as</string>
 </resources>

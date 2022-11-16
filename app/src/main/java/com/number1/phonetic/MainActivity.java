@@ -3,26 +3,35 @@ package com.number1.phonetic;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.content.Intent;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.number1.phonetic.adapter.ProductAdapter;
+import com.number1.phonetic.adapter.ProductAdapterH;
+import com.number1.phonetic.adapter.SupplierAdapter;
+import com.number1.phonetic.adapter.SupplierAdapterH;
+import com.number1.phonetic.model.Product;
+import com.number1.phonetic.model.Supplier;
+
+import java.lang.reflect.GenericArrayType;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        RecyclerView rvProducts = findViewById(R.id.rvProducts);
         //TODO: SetOnClickListener on ImageButtons
         /*
         ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
@@ -41,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Intent intent = getIntent();
+        ArrayList<Product> products = new ArrayList<>();
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+        Database.grabProducts(products);
+        Database.grabSuppliers(suppliers);
+        createContent(products, suppliers);
     }
 
     public void openHome(View view) {
@@ -91,39 +105,29 @@ public class MainActivity extends AppCompatActivity {
                 providersScreen.setVisibility(View.VISIBLE);
                 break;
         }
+
     }
 
+    public void createContent(ArrayList<Product> products, ArrayList<Supplier> suppliers) {
+        try {
+            RecyclerView rvProducts = findViewById(R.id.rvProducts);
+            rvProducts.setLayoutManager(new LinearLayoutManager(this));
+            rvProducts.setAdapter(new ProductAdapter(products, this));
 
-    /*
-     * Oraingoz erroreak eman besterik ez du egiten.
-     */
+            RecyclerView rvProductsH = findViewById(R.id.rvProductsH);
+            rvProductsH.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            rvProductsH.setAdapter(new ProductAdapterH(products, this));
 
-    private class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterHolder> {
-        @NonNull
-        @Override
-        public ProductAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new ProductAdapterHolder(getLayoutInflater().inflate(R.layout.product_list_v, parent, false));
-        }
+            RecyclerView rvSuppliers = findViewById(R.id.rvProviders);
+            rvSuppliers.setLayoutManager(new LinearLayoutManager(this));
+            rvSuppliers.setAdapter(new SupplierAdapter(suppliers, this));
 
-        @Override
-        public void onBindViewHolder(@NonNull ProductAdapterHolder holder, int position) {
+            RecyclerView rvSuppliersH = findViewById(R.id.rvSuppliersH);
+            rvSuppliersH.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            rvSuppliersH.setAdapter(new SupplierAdapterH(suppliers, this));
 
-        }
-
-        @Override
-        public int getItemCount() {
-            return 0;
-        }
-
-        class ProductAdapterHolder extends RecyclerView.ViewHolder {
-            public ProductAdapterHolder(View itemView) {
-                super(itemView);
-                ImageView imgProduktua = itemView.findViewById(R.id.imgProduktua);
-                TextView txtPrIzena = itemView.findViewById(R.id.txtPrIzena);
-                TextView txtPrHornitzailea = itemView.findViewById(R.id.txtPrHornitzailea);
-                TextView txtPrPrezioa = itemView.findViewById(R.id.txtPrPrezioa);
-                TextView txtPrStock = itemView.findViewById(R.id.txtPrStock);
-            }
+        } catch (Exception e) {
+            Toast.makeText(this, "RecyclerView error", Toast.LENGTH_SHORT).show();
         }
     }
 }
