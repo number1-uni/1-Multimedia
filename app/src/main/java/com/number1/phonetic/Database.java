@@ -1,5 +1,6 @@
 package com.number1.phonetic;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
@@ -86,7 +87,7 @@ public class Database {
                         }
                     }
                 } catch (SQLException e) {
-                    Log.e("Datu basea", e.getMessage());
+                    Toast.makeText(null, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });

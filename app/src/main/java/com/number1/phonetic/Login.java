@@ -34,7 +34,6 @@ public class Login extends AppCompatActivity {
         strPass = pass.getText().toString();
         Database.LogIn(strUser, strPass);
         if (connection.getEstado()) {
-            Toast.makeText(Login.this, "Log in ...", Toast.LENGTH_SHORT).show();
             createNew();
             finish();
         } else {
@@ -44,6 +43,7 @@ public class Login extends AppCompatActivity {
 
     private void createNew() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("user", strUser);
         startActivity(intent);
     }
 }

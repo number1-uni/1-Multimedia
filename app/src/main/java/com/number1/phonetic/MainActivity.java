@@ -6,6 +6,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -32,24 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //TODO: SetOnClickListener on ImageButtons
-        /*
-        ImageButton btnProducts = (ImageButton) findViewById(R.id.btnProducts);
-        ImageButton btnProviders = (ImageButton) findViewById(R.id.btnProviders);
-        try {
-            btnProducts.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    openProducts();
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-         */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Intent intent = getIntent();
+        String user = getIntent().getStringExtra("user");
+        TextView userText = findViewById(R.id.txtUser);
+        String userTextE;
+        if (getResources().getConfiguration().locale.getLanguage().equals("eu")) {
+            userTextE = user + " " + getResources().getString(R.string.loggedAs);
+        } else {
+            userTextE = getResources().getString(R.string.loggedAs) + " " + user;
+        }
+        userText.setText(userTextE);
         ArrayList<Product> products = new ArrayList<>();
         ArrayList<Supplier> suppliers = new ArrayList<>();
         Database.grabProducts(products);
