@@ -1,6 +1,8 @@
 package com.number1.phonetic.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import com.number1.phonetic.MainActivity;
 import com.number1.phonetic.R;
 import com.number1.phonetic.model.Product;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
@@ -30,7 +34,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.txtPrIzena.setText(product.getName());
         holder.txtPrPrezioa.setText(String.valueOf(product.getPrice()) + "€");
         holder.imgProduct.setImageResource(R.drawable.ic_launcher_background);
+        /*
+        IMAGE TEST (NOT WORKING)
+        String url = "https://images.unsplash.com/photo-1668613964763-90d0bd6559f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80";
+        Drawable d = img(url);
+        if (d == null) {
+            holder.imgProduct.setImageResource(R.drawable.ic_launcher_background);
+        } else {
+            holder.imgProduct.setImageDrawable(d);
+        }
+        */
     }
+
+    /*
+    public static Drawable img(String strurl) {
+        try {
+            URL url = new URL(strurl);
+            InputStream is = (InputStream) url.getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+     */
 
     @NonNull
     @Override

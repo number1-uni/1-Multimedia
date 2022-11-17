@@ -1,13 +1,12 @@
 package com.number1.phonetic;
 
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.number1.phonetic.model.Product;
 import com.number1.phonetic.model.Supplier;
 
+import java.io.IOException;
 import java.net.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,6 +35,22 @@ public class Database {
 
     public boolean getEstado() {
         return estado;
+    }
+
+    // ICMP
+    public static boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 192.168.65.13");
+            int exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     private static Connection connect() {

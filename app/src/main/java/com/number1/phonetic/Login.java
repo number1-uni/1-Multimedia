@@ -24,7 +24,11 @@ public class Login extends AppCompatActivity {
 
         loginButton = findViewById(R.id.logButton);
         loginButton.setOnClickListener(v -> {
-            verify();
+            //if(Database.isOnline()) {
+                verify();
+           // } else {
+            //    Toast.makeText(Login.this, "You're offline", Toast.LENGTH_SHORT).show();
+            //}
         });
     }
 
